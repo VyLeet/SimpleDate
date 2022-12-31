@@ -2,10 +2,31 @@ import XCTest
 @testable import SimpleDate
 
 final class SimpleDateTests: XCTestCase {
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(SimpleDate().text, "Hello, World!")
+    func testCreateWithFirstDayOfNonLeapTheYear() throws {
+        let date = Date.init(timeIntervalSinceReferenceDate: 0)
+        let simpleDate = SimpleDate(date: date)
+        
+        XCTAssertEqual(simpleDate.dayNumber, 1)
+    }
+    
+    func testCreateWithFirstDayOfLeapTheYear() throws {
+        let date = Date.init(timeIntervalSince1970: 0)
+        let simpleDate = SimpleDate(date: date)
+        
+        XCTAssertEqual(simpleDate.dayNumber, 1)
+    }
+    
+    func testCreateWithLastDayOfLeapYear() throws {
+        let date = Date.init(timeIntervalSinceReferenceDate: -10000)
+        let simpleDate = SimpleDate(date: date)
+        
+        XCTAssertEqual(simpleDate.dayNumber, 366)
+    }
+    
+    func testCreateWithLastDayOfNonLeapYear() throws {
+        let date = Date.init(timeIntervalSince1970: -10000)
+        let simpleDate = SimpleDate(date: date)
+        
+        XCTAssertEqual(simpleDate.dayNumber, 365)
     }
 }

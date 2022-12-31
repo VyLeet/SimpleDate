@@ -1,3 +1,3 @@
 # SimpleDate
 
-A description of this package.
+A Swift Package for easy Date & Time management
